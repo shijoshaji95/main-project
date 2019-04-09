@@ -1,6 +1,9 @@
 
 #include <ESP8266WiFi.h>
 #include <FirebaseArduino.h>
+#include <Servo.h> 
+ 
+Servo myservo; 
 
 // Set these to run example.
 #define FIREBASE_HOST "home-automation-c6c30.firebaseio.com"
@@ -18,6 +21,8 @@ float sensorValue;
 void setup() {
   // put your setup code here, to run once:
   Serial.begin(9600);//HIGH  ;;digitalWrite(D6,HIGH)
+
+  myservo.attach(D2);  // attaches the servo on GIO2 to the servo object   
   
   pinMode(Relay1,OUTPUT);
   digitalWrite(Relay1,HIGH);
@@ -76,11 +81,13 @@ void loop() {
      {
       digitalWrite(Relay2,LOW);
       Serial.println("Door is lock");
+      myservo.write(0);
     }
   if(rel2==0)                                  // If, the Status is 0, turn Off the Relay2
     {                                      
       digitalWrite(Relay2,HIGH);
       Serial.println("Door is unlock");
+      myservo.write(180);
     }
      
      //******************************************
