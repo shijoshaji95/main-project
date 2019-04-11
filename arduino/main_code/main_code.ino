@@ -158,8 +158,7 @@ void loop() {
      {
       Serial.println("notification on");
       tone(D6, 1000); // Send 1KHz sound signal...
-      delay(1000);
-    }
+     }
    if(rel3==0)                                    // If, the Status is 0, turn Off the Relay2
     {                                      
       Serial.println("notification off");
@@ -172,8 +171,7 @@ void loop() {
      {
       Serial.println("notification on");
       tone(D6, 1000); // Send 1KHz sound signal...
-      delay(1000);
-    }
+     }
    if(rel4==0)                                    // If, the Status is 0, turn Off the Relay2
     {                                      
       Serial.println("notification off");
@@ -191,13 +189,13 @@ void loop() {
    int proximity = digitalRead(REED_PIN); // Read the state of the switch
    if (proximity == LOW) // If the pin reads low, the switch is closed.
    {
-     Serial.println("Switch closed");
+     Serial.println("Door open");
      Firebase.setString("FB4","2");
    
    }
    else
    {
-    Serial.println("Switch open");
+    Serial.println("Door close");
     Firebase.setString("FB4","0");
    }
 
