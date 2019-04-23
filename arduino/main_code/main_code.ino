@@ -53,7 +53,8 @@ void setup() {
   pinMode(D6, OUTPUT); // Set buzzer - pin 9 as an output//+=pin D6; -=Gnd
   pinMode(Relay1,OUTPUT);
   digitalWrite(Relay1,LOW);
- 
+  pinMode(D7, OUTPUT);
+   pinMode(D8, OUTPUT);
   
   // connect to wifi.
   WiFi.begin(WIFI_SSID, WIFI_PASSWORD);
@@ -69,9 +70,9 @@ void setup() {
   Firebase.begin(FIREBASE_HOST, FIREBASE_AUTH);
   
   Firebase.setString("FB1","0");
-  Firebase.setInt("FB1",0); 
-  Firebase.setInt("FB2",0); 
-  Firebase.setInt("FB3",0); 
+  Firebase.setString("FB1","0"); 
+  Firebase.setString("FB2","0"); 
+  Firebase.setString("FB3","0"); 
    
 }
 
@@ -92,6 +93,9 @@ void loop() {
       return;
       }
     //**************************************
+
+    digitalWrite(D7,HIGH);
+    digitalWrite(D8,HIGH);
 
   rel0=Firebase.getString("FB0").toInt();    //Reading the value of the varialble Status from the firebase
   display.display();
