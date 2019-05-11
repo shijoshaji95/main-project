@@ -224,9 +224,9 @@ void loop() {
    int sensorValue1 = analogRead(A0);          //read sensor value from relay2 D7 pin--A0 pin
    Serial.print("**sensor value1 = ");
    Serial.println(sensorValue1);
-   if(sensorValue1 <= 30)
+   if(sensorValue1 <= 40)
       Firebase.setString("FB7","0");           // upload value to firebase
-   if(sensorValue1 >=30 )
+   if(sensorValue1 >=40 )
       Firebase.setString("FB7","2");
 
     
